@@ -1,0 +1,339 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="NguoiDungMasterPage.master.cs" Inherits="DoAn.NguoiDungMasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/templatemo.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+        <script src="assets/js/jquery-1.11.0.min.js"></script>
+    <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/templatemo.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <script>
+        // Script để hiển thị hiệu ứng thông báo (alert)
+        $(document).ready(function () {
+            // Tự động ẩn thông báo sau 3 giây
+            setTimeout(function () {
+                $(".alert").fadeOut("slow");
+            }, 3000);
+        });
+    </script>
+    <style>
+ .navbar {
+    background: linear-gradient(90deg, #ff416c, #ff4b2b);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 5px 10px; 
+}
+
+.navbar-nav {
+    display: flex;
+    justify-content: center; 
+    gap: 10px; 
+}
+
+.nav-link {
+    color: white !important;
+    font-weight: 500;
+    padding: 8px 15px; 
+    margin: 0 8px; 
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+.nav-link:hover {
+    background-color: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 28px;
+    color: white !important;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    margin-right: 15px; 
+}
+
+.promo-text {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* CSS (giỏ hàng và đăng nhập) */
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 15px; 
+    margin-left: auto; 
+}
+
+.header-icon-link {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.header-icon-link:hover {
+    transform: translateY(-2px);
+}
+
+.icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.15);
+    width: 38px; 
+    height: 38px; 
+    border-radius: 50%;
+    margin-right: 5px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s;
+}
+
+.cart-icon {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.icon-wrapper:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+.header-icon-link i {
+    font-size: 18px;
+    color: white;
+}
+
+.cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #fff;
+    color: #ff4b2b;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.account-btn {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(90deg, #ff416c, #ff4b2b); 
+    padding: 8px 15px; 
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(255, 75, 43, 0.4); 
+    border: 1px solid rgba(255, 255, 255, 0.2);  
+}
+
+.account-btn:hover {
+    transform: translateY(-2px);  
+    box-shadow: 0 4px 12px rgba(255, 75, 43, 0.6);  
+}
+
+.account-text {
+    color: white !important;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    margin-left: 10px; 
+}
+
+.account-btn i {
+    font-size: 16px;
+    color: white;
+}
+
+.dropdown-menu {
+    background-color: #fff;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    padding: 10px 0;
+    margin-top: 10px;
+}
+
+.dropdown-item {
+    color: #333;
+    padding: 8px 20px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #ff416c;
+}
+
+.dropdown-toggle::after {
+    vertical-align: middle;
+}
+
+@media (max-width: 991px) {
+    .navbar-nav {
+        justify-content: flex-start;
+        padding: 10px 0;
+    }
+    
+    .nav-link {
+        margin: 5px 0;
+    }
+    
+    .header-icons {
+        margin-top: 15px;
+        justify-content: center;
+        width: 100%;
+        gap: 15px;
+    }
+    
+    .header-icon-link {
+        margin: 0 10px;
+    }
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+@media (max-width: 991px) {
+    .dropdown-menu {
+        position: static;
+        float: none;
+    }
+}
+</style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a href="TrangChu.aspx" class="navbar-brand logo">
+                LAPTOP DANA
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="TrangChu.aspx">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ThongTinDANA.aspx">Thông Tin Laptop DANA</a>
+                    </li
+                    <li class="nav-item">
+                        <a class="nav-link" href="TraCuuDonHang.aspx">Tra Cứu Đơn Hàng</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Danh Mục
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="DanhMuc.aspx?loai=gaming">Laptop Asus</a>
+                            <a class="dropdown-item" href="DanhMuc.aspx?loai=office">Laptop Gaming</a>
+                            <a class="dropdown-item" href="DanhMuc.aspx?loai=design">Laptop Dell</a>
+                            <a class="dropdown-item" href="DanhMuc.aspx?loai=design">Laptop HP</a>
+                    </li>
+                </ul>
+                <div class="header-icons ml-auto">
+                    <a href="GioHang.aspx" class="header-icon-link">
+                        <div class="icon-wrapper cart-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-badge" id="cartCount" runat="server">0</span>
+                        </div>
+                    </a>
+                    <div class="account-btn">
+                        <i class="fas fa-user"></i>
+                        <asp:LinkButton ID="dangkydangnhap" runat="server" CssClass="account-text">Tài khoản</asp:LinkButton>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+        </div>
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+         <div>           
+            <!-- Start Footer -->
+            <footer class="bg-dark" id="tempaltemo_footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4 pt-5">
+                            <h2 class="h2 text-light border-bottom pb-3 border-light logo">LAPTOP DANA</h2>
+                            <ul class="list-unstyled text-light footer-link-list">
+                                <li>
+                                    <i class="fas fa-map-marker-alt fa-fw"></i>
+                                    01 Hàm Nghi, Đà Nẵng
+                                </li>
+                                <li>
+                                    <i class="fa fa-phone fa-fw"></i>
+                                    <a class="text-decoration-none" href="tel:010-020-0340">1900.9999</a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-envelope fa-fw"></i>
+                                    <a class="text-decoration-none" href="mailto:info@company.com">laptopdana@company.com</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="col-md-4 pt-5">
+                            <h2 class="h2 text-light border-bottom pb-3 border-light">Danh Mục</h2>
+                            <ul class="list-unstyled text-light footer-link-list">
+                                <li><a class="text-decoration-none" href="#">DELL</a></li>
+                                <li><a class="text-decoration-none" href="#">HP</a></li>
+                                <li><a class="text-decoration-none" href="#">ASUS</a></li>
+                                <li><a class="text-decoration-none" href="#">GAMING</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-md-4 pt-5">
+                            <h2 class="h2 text-light border-bottom pb-3 border-light">Lối Tắt</h2>
+                            <ul class="list-unstyled text-light footer-link-list">
+                                <li><a class="text-decoration-none" href="TrangChu.aspx">Trang Chủ</a></li>
+                                <li><a class="text-decoration-none" href="ThongTinDANA.aspx">Thông Tin Laptop DaNa</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                <div class="w-100 bg-black py-3">
+                    <div class="container">
+                        <div class="row pt-2">
+                            <div class="col-12">
+                                <p class="text-left text-light">
+                                    Copyright &copy; 2025 Company Name 
+                                    | Designed by <a rel="sponsored"  target="_blank">LaptopDaNa</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </footer>
+       <!-- End Footer -->
+         </div>
+    </form>
+</body>
+</html>
